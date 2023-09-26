@@ -6,29 +6,26 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-}
-
 body {
   font-family: 'Roboto Mono', sans-serif;
   color: #252525;
   font-weight: 400;
-  background-color: #f7f2e9;
+  background-color: #e7e0d3;
   border-bottom: 1.6rem solid #edc84b;
-  min-height: 100vh;
-  padding: 3.2rem;
   padding-bottom: 6rem;
+  font-size: .8em;
 }
 
 .container {
-  max-width: 80rem;
+  width: 100%;
+  max-width: 900px;
   margin: 0 auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4.8rem;
+  justify-content: center;
+  overflow-x: hidden;
+
 }
 
 /* *************** */
@@ -39,16 +36,17 @@ body {
 
 .header h1 {
   /* Non-accessible color */
-  color: #edc84b;
+  color: #d1a71e;
   /* color: #af8602; */
 
   text-transform: uppercase;
   text-align: center;
-  font-size: 5.2rem;
+  font-size: 3rem;
   font-weight: 300;
   letter-spacing: 3px;
   position: relative;
   width: 100%;
+  font-weight: bold;
   display: block;
 }
 
@@ -57,8 +55,8 @@ body {
   display: block;
   content: '';
   height: 3px;
-  width: 12rem;
-  background-color: #edc84b;
+  width: 8rem;
+  background-color: #d1a71e;
   position: absolute;
   top: calc(50% - 1px);
 }
@@ -77,7 +75,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4rem;
+  gap: 1rem;
 }
 
 .menu h2 {
@@ -85,10 +83,11 @@ body {
   padding: 1rem 0;
   border-top: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
-  font-size: 2.4rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-weight: 500;
+  margin-top: 1em;
 }
 
 .menu > p {
@@ -98,53 +97,51 @@ body {
   width: 80%;
 }
 
-.pizzas {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4.8rem;
-}
-
-.pizza {
+.product{
+  opacity: .8;
   display: flex;
-  gap: 3.2rem;
+  gap: 1em;
+  margin-bottom: 1em;
 }
-
-.pizza img {
-  width: 12rem;
+.product img {
+  width: 100%;
+  min-width: 150px;
+  max-width: 200px;
+  height: 100%;
   aspect-ratio: 1;
   align-self: start;
+  object-fit: cover;
 }
 
-.pizza div {
+.product div {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
   padding: 0.4rem 0;
 }
 
-.pizza h3 {
+.product h3 {
   font-size: 2rem;
   font-weight: 400;
 }
 
-.pizza p {
+.product p {
   font-size: 1.4rem;
   font-weight: 300;
   font-style: italic;
   margin-bottom: auto;
 }
 
-.pizza span {
+.product span {
   display: block;
   font-size: 1.6rem;
 }
 
-.pizza.sold-out {
+.product.sold-out {
   color: #888;
 }
 
-.pizza.sold-out img {
+.product.sold-out img {
   filter: grayscale();
   opacity: 0.8;
 }
@@ -185,3 +182,31 @@ SPACING SYSTEM (px)
 FONT SIZE SYSTEM (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 /52 / 62 / 74 / 86 / 98
 */
+
+
+
+.container-menu{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em;
+}
+
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 1em 0;
+}
+
+nav ul{
+  text-decoration: none;
+  list-style: none;
+}
+nav ul li a{
+  font-size: 1.7em;
+  color: #557;
+  font-weight: bold;
+  padding: .5em 1em;
+}

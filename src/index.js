@@ -1,51 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-
-const pizzaData = [
-  {
-    name: "Focaccia",
-    ingredients: "Bread with italian olive oil and rosemary",
-    price: 6,
-    photoName: "pizzas/focaccia.jpg",
-    soldOut: false,
-  },
-  {
-    name: "Pizza Margherita",
-    ingredients: "Tomato and mozarella",
-    price: 10,
-    photoName: "pizzas/margherita.jpg",
-    soldOut: false,
-  },
-  {
-    name: "Pizza Spinaci",
-    ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
-    price: 12,
-    photoName: "pizzas/spinaci.jpg",
-    soldOut: false,
-  },
-  {
-    name: "Pizza Funghi",
-    ingredients: "Tomato, mozarella, mushrooms, and onion",
-    price: 12,
-    photoName: "pizzas/funghi.jpg",
-    soldOut: false,
-  },
-  {
-    name: "Pizza Salamino",
-    ingredients: "Tomato, mozarella, and pepperoni",
-    price: 15,
-    photoName: "pizzas/salamino.jpg",
-    soldOut: true,
-  },
-  {
-    name: "Pizza Prosciutto",
-    ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
-    price: 18,
-    photoName: "pizzas/prosciutto.jpg",
-    soldOut: false,
-  },
-];
+import { pizzaData } from './pizzas'
+import { startersData } from './starters'
+import { drinksData } from './drinks'
+import { dessertsData } from './desserts'
 
 const pizzas = pizzaData;
 const numPizza = pizzas.length;
@@ -63,7 +23,21 @@ function App() {
 function Header() {
   return (
     <header className="header">
-      <h1>Pizza Menu </h1>
+      <h1>Pizza <br></br> Menu </h1>
+      <nav>
+        <ul>
+          <li><a href="#starters">Starters</a></li>
+        </ul>
+        <ul>
+          <li><a href="#main">Main Courses</a></li>
+        </ul>
+        <ul>
+          <li><a href="#desserts">Desserts</a></li>
+        </ul>
+        <ul>
+          <li><a href="#drinks">Drinks</a></li>
+        </ul>
+      </nav>
     </header>
   );
 }
@@ -71,17 +45,22 @@ function Header() {
 function Menu() {
   return (
     <main className="menu">
-      <h2>Our Menu</h2>
+      <h2 id="starters">OUR STARTERS</h2>
 
+      {
+        <ul className="container-menu">
+          {startersData.map((product) => (
+            <Pizza key={product.name} pizzaObj={product} />
+          ))}
+        </ul>
+      }
+
+      <h2 id="main">OUR MAIN COURSES</h2>
       {numPizza > 0 ? (
         <>
-          <p>
-            Authentic Italian cusine. 6 creative dishes to choose from. All from
-            our stone oven, all organic, all delecious.
-          </p>
-          <ul className="pizzas">
-            {pizzas.map((pizza) => (
-              <Pizza key={pizza.name} pizzaObj={pizza} />
+          <ul className="container-menu">
+            {pizzas.map((product) => (
+              <Pizza key={product.name} pizzaObj={product} />
             ))}
           </ul>
         </>
@@ -91,6 +70,27 @@ function Menu() {
           <br /> Come again later!
         </h1>
       )}
+
+
+      <h2 id="desserts">OUR DESSERTS</h2>
+
+      {
+        <ul className="container-menu">
+          {dessertsData.map((product) => (
+            <Pizza key={product.name} pizzaObj={product} />
+          ))}
+        </ul>
+      }
+
+      <h2 id="drinks">OUR DRINKS</h2>
+
+      {
+        <ul className="container-menu">
+          {drinksData.map((product) => (
+            <Pizza key={product.name} pizzaObj={product} />
+          ))}
+        </ul>
+      }
     </main>
   );
 }
@@ -99,12 +99,12 @@ function Pizza({ pizzaObj }) {
   // if (props.pizzaObj.soldOut) return null;
 
   return (
-    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+    <li className={`product ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
         <h3>{pizzaObj.name}</h3>
-        <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
+        {/* <p>{pizzaObj.ingredients}</p> */}
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : `$ ${pizzaObj.price}`}</span>
       </div>
     </li>
   );
